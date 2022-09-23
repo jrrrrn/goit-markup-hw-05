@@ -122,8 +122,9 @@ img {
   margin-right: 90px;
 }
 .animate__pulse {
-  animation-duration: 1000ms ;
-} 
+  animation-duration: 1000ms;
+  animation-delay: 300ms;
+}
 .nav-link {
   font-weight: 500;
 
@@ -140,7 +141,6 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
 }
-
 
 .address-icon {
   fill: #757575;
@@ -171,6 +171,7 @@ img {
 .header-address-link .address-icon {
   transition: fill 250ms var(--animation-timing-function);
 }
+
 .header-address-link:hover .address-icon,
 .header-address-link:focus .address-icon {
   fill: var(--accent-color);
@@ -188,26 +189,28 @@ img {
   color: var(--accent-color);
 }
 
-
-
-.current {
+.nav-link {
   position: relative;
 }
-
-.current::after {
+.studio-current::after,
+.portfolio-current::after {
   content: "";
 
+  display: block;
   position: absolute;
   bottom: 0;
   left: 0;
-  display: block;
 
-  height: 4px;
   width: 100%;
+  height: 4px;
 
-  background-image: url(../images/icons/underline.svg);
   background-repeat: no-repeat;
-
+}
+.studio-current::after {
+  background-image: url(../images/icons/underline-1.svg);
+}
+.portfolio-current::after {
+  background-image: url(../images/icons/underline-2.svg);
 }
 
 /* Footer */
@@ -243,7 +246,6 @@ img {
 .footer-address-column {
   margin-right: 70px;
 }
-
 
 .footer-column-title {
   margin-bottom: 20px;
@@ -328,6 +330,14 @@ img {
 
   line-height: 1.9;
   letter-spacing: 0.06em;
+
+  box-shadow: 0px 4px 4px 0px #00000026;
+
+  transition: background-color 250ms var(--animation-timing-function);
+}
+.modal-button:hover,
+.modal-button:focus {
+  background-color: #188ce8;
 }
 
 /* About us */
@@ -376,7 +386,6 @@ img {
   position: relative;
 }
 .what-we-do-list-item-desc {
-
   position: absolute;
   bottom: 0;
   height: 70px;
@@ -389,10 +398,6 @@ img {
   text-transform: uppercase;
   font-weight: 700;
   color: var(--secondary-text-color);
-  
-  
- 
-
 }
 
 /* Our team*/
@@ -430,8 +435,8 @@ img {
 .our-team-employee-position {
   margin-bottom: 16px;
 
-font-size: 16px;
- line-height: 1.18;
+  font-size: 16px;
+  line-height: 1.18;
 }
 .employee-desc {
   text-align: center;
@@ -450,13 +455,13 @@ font-size: 16px;
 .employee-socials-item {
   width: 44px;
   height: 44px;
-  
+
   padding: 12px;
 
   border-radius: 50%;
 
   transition: background-color 250ms var(--animation-timing-function);
-  
+
   cursor: pointer;
 }
 
@@ -468,21 +473,17 @@ font-size: 16px;
   height: 20px;
 
   fill: #afb1b8;
-
-  
 }
 .employee-socials-item:hover {
-  
   background-color: var(--accent-color);
 }
 .employee-socials-icon {
-  transition: fill 250ms var(--animation-timing-function); 
+  transition: fill 250ms var(--animation-timing-function);
 }
 
 .employee-socials-item:hover .employee-socials-icon {
   fill: #fff;
 }
-
 
 /* Regular clients */
 .regular-clients-list {
@@ -520,7 +521,6 @@ font-size: 16px;
   fill: var(--accent-color);
 }
 
-
 /* Our projects */
 .portfolio {
   padding-top: 94px;
@@ -542,7 +542,9 @@ font-size: 16px;
   font-weight: 500;
 
   line-height: 1.62;
-  transition: background-color 250ms var(--animation-timing-function), color 250ms var(--animation-timing-function), box-shadow 250ms var(--animation-timing-function);
+  transition: background-color 250ms var(--animation-timing-function),
+    color 250ms var(--animation-timing-function),
+    box-shadow 250ms var(--animation-timing-function);
 }
 .filter-btn:hover,
 .filter-btn:focus {
@@ -602,36 +604,28 @@ font-size: 16px;
 .project-img {
   position: relative;
   overflow: hidden;
-
-  
-
-
 }
 .project-img-content {
   position: absolute;
   top: 0;
   bottom: 0;
-  
-  
-padding-top: 63px;
- padding-right: 24px;
- padding-left: 24px;
-    background-color: rgba(33, 150, 243, 0.9);
-    
-    font-size: 18px;
-    line-height: 28px;
-    color: var(--secondary-text-color);
-    
-    transform: translateY(101%);
-    transition: transform 250ms var(--animation-timing-function);
-    
 
+  padding-top: 63px;
+  padding-right: 24px;
+  padding-left: 24px;
+
+  background-color: rgba(33, 150, 243, 0.9);
+
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--secondary-text-color);
+
+  transform: translateY(101%);
+  transition: transform 250ms var(--animation-timing-function);
 }
 .project-card:hover .project-img-content {
   transform: translateY(0);
-  
 }
-
 
 .backdrop {
   position: fixed;
@@ -641,58 +635,65 @@ padding-top: 63px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 
-  transition: transform 250ms var(--animation-timing-function), opacity 250ms var(--animation-timing-function);
-  transform: scaleY(1);
   opacity: 1;
-  
+  transition: opacity 200ms var(--animation-timing-function);
 }
 .backdrop.is-hidden {
-   opacity: 0;
-   pointer-events: none;
-   transform: scaleY(0);
-  
-  
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
   width: 528px;
   height: 581px;
 
   border-radius: 4px;
   box-shadow: 0px 2px 1px 0px #00000033;
-  background-color: #fff;
+  background-color: #ffffff;
+
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--animation-timing-function) 200ms,
+    opacity 250ms var(--animation-timing-function) 200ms;
 }
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
 .modal-close-button-position {
-display: flex;
-justify-content: flex-end;
-  
+  display: flex;
+  justify-content: flex-end;
 }
+
 .modal-close-button {
   width: 30px;
   height: 30px;
-    margin: 8px;
-  border: 1px solid #0000001A;
+
+  margin-top: 8px;
+  margin-right: 8px;
+
+  border: 1px solid #0000001a;
   border-radius: 50%;
   background-color: transparent;
 
+  transition: background-color 250ms var(--animation-timing-function);
+
   cursor: pointer;
-
-
-  font-size: 18px;
 }
-
-/* body {
-  margin-top: 70px;
+.modal-close-button-icon {
+  fill: #000000;
+  transition: fill 250ms var(--animation-timing-function);
 }
-header {
-  width: 1600px;
-  position: fixed;
-  top: 0;
-  background-color: white;
-  z-index: 100;
-} */
+.modal-close-button:hover .modal-close-button-icon,
+.modal-close-button:focus .modal-close-button-icon {
+  fill: var(--accent-color);
+}
+.modal-title {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
